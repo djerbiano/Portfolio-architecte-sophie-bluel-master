@@ -1,0 +1,72 @@
+@import "./index.css";
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+header {
+  width: 100%;
+}
+
+main {
+  margin-top: 0px;
+}
+
+.login {
+  min-width: 500px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login h2 {
+  margin-bottom: 37px;
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 28px;
+}
+
+form label,
+.forgetPassword {
+  color: #3d3d3d;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.42px;
+  margin-bottom: 7px;
+}
+
+#email,
+#password {
+  width: 379px;
+  height: 51px;
+  box-shadow: 0px 4px 14px 0px #00000017;
+}
+
+#email {
+  margin-bottom: 52px;
+}
+
+#password {
+  margin-bottom: 37px;
+}
+
+.btn {
+  min-height: auto;
+}
+
+.forgetPassword {
+    
+    text-decoration-line: underline;
+    
+}
+
+footer {
+  width: 100%;
+}
