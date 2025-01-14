@@ -2,21 +2,25 @@
 
 body {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+
 }
 
-header {
-  width: 100%;
+
+
+header nav ul li:nth-child(3) {
+  font-weight: 600;
 }
 
 main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 0px;
+  width: 100%;
 }
 
 .login {
-  min-width: 500px;
+  width: 80%;
   height: 400px;
   display: flex;
   flex-direction: column;
@@ -28,8 +32,10 @@ main {
 }
 
 .login form {
+  width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin-bottom: 28px;
 }
 
@@ -44,7 +50,8 @@ form label,
 
 #email,
 #password {
-  width: 379px;
+  width: 100%;
+  max-width: 379px;
   height: 51px;
   box-shadow: 0px 4px 14px 0px #00000017;
 }
@@ -62,11 +69,5 @@ form label,
 }
 
 .forgetPassword {
-    
-    text-decoration-line: underline;
-    
-}
-
-footer {
-  width: 100%;
+  text-decoration-line: underline;
 }
