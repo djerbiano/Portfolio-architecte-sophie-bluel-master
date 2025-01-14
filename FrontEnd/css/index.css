@@ -36,8 +36,10 @@ li,
 .editProject,
 .closeIcon,
 .deleteIcon,
+.backIcon,
 input[type="button"],
 input[type="submit"] {
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
@@ -229,7 +231,6 @@ main {
 .galleryCard {
   max-width: calc((100% - 40px) / 3);
   height: 100%;
-  flex: 1 1 1;
 }
 
 .galleryCard figcaption {
@@ -318,6 +319,7 @@ main {
   align-items: center;
   background: #0000004d;
   z-index: 100;
+  display: none;
 }
 
 .showData {
@@ -338,7 +340,7 @@ main {
 
 .showData .closeIcon:hover {
   color: red;
-  scale: 1.2;
+  transform: scale(1.2);
 }
 
 .showData h2 {
@@ -397,17 +399,92 @@ main {
   background: #e8f1f6;
 }
 
+.iconContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
+.backIcon:hover {
+  transform: scale(1.2);
+}
 
+.photoUpload {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  border-radius: 3px;
+  padding: 20px 0;
+  position: relative;
+}
 
+.photoUpload img {
+  position: absolute;
+  width: 129px;
+  height: 100%;
+}
 
+.photoUpload .imagesMode {
+  font-size: 76px;
+  color: #b9c5cc;
+}
+.photoUpload button {
+  width: 173px;
+  height: 36px;
+  border-radius: 50px;
+  background-color: #cbd6dc;
+  color: #306685;
+  font-family: "Work Sans";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.42px;
+  text-align: center;
+}
 
+.photoUpload p {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 11.73px;
+  text-align: center;
+  color: #444444;
+}
 
+.addTxtPhoto {
+  margin-top: 30px;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 47px;
+  border-bottom: 1px solid #b3b3b3;
+}
+.addTxtPhoto label {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.42px;
+  margin-bottom: 10px;
+}
+.addTxtPhoto input,
+.addTxtPhoto select {
+  width: 420px;
+  height: 51px;
+  box-shadow: 0px 4px 14px 0px #00000017;
+  margin-bottom: 21px;
+  font-family: "Work Sans";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.42px;
+  padding-left: 17px;
+}
 
-
-
-
-
+.addPhoto {
+  width: 237px;
+  height: 36px;
+  border-radius: 60px;
+  background: #a7a7a7;
+}
 
 footer {
   max-width: 1440px;
