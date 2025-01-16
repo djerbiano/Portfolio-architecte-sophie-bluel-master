@@ -19,7 +19,7 @@
 
     <meta name="description" content="" />
     <link rel="stylesheet" href="./css/index.css" />
-    <script src="./js/app.js" defer></script>
+    <script type="module" src="./js/app.js" defer></script>
   </head>
 
   <body>
@@ -33,8 +33,8 @@
         <ul>
           <li><a href="#portfolio">projets</a></li>
           <li><a href="#contact">contact</a></li>
-          <li><a href="/login.html">login</a></li>
-          <li class="login"><a href="#">logout</a></li>
+          <li class="logout"><a href="/login.html">login</a></li>
+          <li class="login toLogout"><a href="#">logout</a></li>
           <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
         </ul>
       </nav>
@@ -64,17 +64,17 @@
           </p>
         </article>
       </section>
+
       <section id="portfolio">
         <div class="portfolioTitle">
           <h2>Mes Projets</h2>
           <span class="material-symbols-outlined login"> edit_square </span>
           <p class="editProject login">modifier</p>
         </div>
-        <div class="filterContainer">
-        
-        </div>
+        <div class="filterContainer logout"></div>
         <div class="gallery"></div>
       </section>
+
       <section id="contact">
         <h2>Contact</h2>
         <p>Vous avez un projet ? Discutons-en !</p>
@@ -90,8 +90,6 @@
       </section>
 
       <div class="modal">
-        <!--  
-          
         <div class="showData">
           <span class="material-symbols-outlined closeIcon"> close </span>
           <h2>Galerie photo</h2>
@@ -159,34 +157,21 @@
               />
               <span class="material-symbols-outlined deleteIcon"> delete </span>
             </div>
-         
+
             <div class="project">
-              <img
-                src="assets/images/villa-ferneze.png"
-                alt="Abajour Tahina"
-              />
+              <img src="assets/images/villa-ferneze.png" alt="Abajour Tahina" />
               <span class="material-symbols-outlined deleteIcon"> delete </span>
             </div>
             <div class="project">
-              <img
-                src="assets/images/la-balisiere.png"
-                alt="Abajour Tahina"
-              />
+              <img src="assets/images/la-balisiere.png" alt="Abajour Tahina" />
               <span class="material-symbols-outlined deleteIcon"> delete </span>
             </div>
-       
-         
-       
-       
-
-
           </div>
           <button class="btnPrimary">Ajouter une photo</button>
-
         </div>
-        -->
 
         <!-- AJOUT PHOTO -->
+        <!-- 
         <div class="showData">
           <div class="iconContainer">
             <span class="material-symbols-outlined backIcon"> arrow_back </span>
@@ -213,7 +198,7 @@
 
           <button class="btnPrimary addPhoto">Valider</button>
         </div>
-      </div>
+      --></div>
     </main>
 
     <footer>

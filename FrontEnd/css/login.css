@@ -2,6 +2,7 @@
 
 body {
   min-height: 100vh;
+  position: relative;
 }
 
 header nav ul li:nth-child(3) {
@@ -10,6 +11,7 @@ header nav ul li:nth-child(3) {
 
 main {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-top: 0px;
@@ -22,6 +24,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: all 0.3s ease;
 }
 
 .login h2 {
@@ -72,4 +75,37 @@ form label,
 
 .forgetPassword {
   text-decoration-line: underline;
+}
+
+.modalMessage {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-out;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.show {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+
+.modalMessageContent {
+  font-family: "Work Sans";
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #fff;
+  min-width: 200px;
+  min-height: 200px;
+  border-radius: 10px;
 }

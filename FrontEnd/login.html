@@ -12,7 +12,7 @@
     />
     <meta name="description" content="" />
     <link rel="stylesheet" href="./css/login.css" />
-    <script src="./js/app.js" defer></script>
+    <script src="./js/login.js" defer></script>
   </head>
   <body>
     <header>
@@ -32,12 +32,28 @@
         <h2>Log In</h2>
         <form>
           <label for="email">E-mail</label>
-          <input type="email" id="email" required />
+          <input
+            type="email"
+            id="email"
+            value="sophie.bluel@test.tld"
+            required
+          />
           <label for="password">Mot de passe</label>
-          <input type="password" id="password" required />
-          <button type="submit" class="btnPrimary">Se connecter</button>
+          <input type="password" id="password" value="S0phie" required />
+          <button type="button" id="login" class="btnPrimary">
+            Se connecter
+          </button>
         </form>
         <a href="#" class="forgetPassword">Mot de passe oublié</a>
+      </div>
+      <div class="modalMessage ">
+        <div class="modalMessageContent">
+          <p>
+            Votre compte a été créé avec succès. Vous pouvez vous connecter
+            maintenant.
+          </p>
+          <button class="btnPrimary closeModal">Fermer</button>
+        </div>
       </div>
     </main>
 

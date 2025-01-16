@@ -41,7 +41,7 @@ exports.login = async (req, res) => {
 				process.env.TOKEN_SECRET,
 				{ expiresIn: '24h' }
 			)
-		})
+		}) 
 
 	}
 }

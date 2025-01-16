@@ -326,6 +326,7 @@ main {
   padding: 26px 30px;
   width: 630px;
   height: 688px;
+  max-height: 80vh;
   border-radius: 10px;
   background: #ffffff;
   display: flex;
@@ -560,5 +561,4 @@ footer nav ul li {
 /*mode login*/
 .login {
   display: none;
-  display: flex;
 }
