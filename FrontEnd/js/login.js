@@ -7,15 +7,15 @@ const inputEmail = document.querySelector("#email");
 const inputPassword = document.querySelector("#password");
 const modal = document.querySelector(".modalMessage");
 const modalContent = document.querySelector(".modalMessage p");
-const closeModal = document.querySelector(".closeModal");
+const btnCloseModalError = document.querySelector(".closeModal");
 
-const showModal = (textContent) => {
+const showModalError = (textContent) => {
   formContainer.style.filter = "blur(5px)";
   modal.classList.add("show");
   modalContent.textContent = textContent;
 };
 
-closeModal.addEventListener("click", () => {
+btnCloseModalError.addEventListener("click", () => {
   modal.classList.remove("show");
   formContainer.style.filter = "none";
   document.querySelector("#email").value = "";
@@ -24,7 +24,7 @@ closeModal.addEventListener("click", () => {
 
 const checkInputValue = () => {
   if (inputEmail.value.trim() === "" || inputPassword.value.trim() === "") {
-    showModal("Veuillez remplir tous les champs");
+    showModalError("Veuillez remplir tous les champs");
     return false;
   }
   return true;
@@ -49,12 +49,12 @@ const login = () => {
       if (!response.ok) {
         const data = await response.json();
         // -----------------
-        //en cas de mot de passe non valide, le back ne renvoie pas de message ! response = {"error":{}}. adaptation avec showModal("Email ou mot de passe incorrect");
+        //en cas de mot de passe non valide, le back ne renvoie pas de message ! response = {"error":{}}. adaptation avec showModalError("Email ou mot de passe incorrect");
         // ------------------
         if (data.error) {
-          showModal("Email ou mot de passe incorrect");
+          showModalError("Email ou mot de passe incorrect");
         } else {
-          showModal(data.message);
+          showModalError(data.message);
         }
 
         throw new Error(
@@ -63,8 +63,7 @@ const login = () => {
       }
 
       const data = await response.json();
-      console.log(data);
-      localStorage.setItem("token", data.token);
+      sessionStorage.setItem("token", data.token);
       window.location.href = "index.html";
     } catch (error) {
       console.error("Erreur lors de la connexion:", error);

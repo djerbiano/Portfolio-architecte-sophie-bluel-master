@@ -1,4 +1,4 @@
-import { displayProjects } from "./utils.js";
+import { displayProjects, formatTitle } from "./utils.js";
 
 // Api address
 const API_URL = (API_ENDPOINT) => `http://localhost:5678/api/${API_ENDPOINT}`;
@@ -65,8 +65,8 @@ const filterProjects = (categoryName) => {
   displayProjects(filteredProjects);
 };
 
-// mode login
-const token = localStorage.getItem("token");
+// Display or hide elements based on login status
+const token = sessionStorage.getItem("token");
 const elementsToShow = document.querySelectorAll(".login");
 const elementsToHide = document.querySelectorAll(".logout");
 
@@ -78,10 +78,78 @@ if (token) {
     element.style.display = "none";
   });
 }
+// -----------------
+//start open modal to edit project
+// ------------------
+const btnUpdateProject = document.querySelector(".editProject");
+const modalEditProject = document.querySelector(".modal");
+const btnCloseModal = document.querySelector(".closeIcon");
+const barModeUpdate = document.querySelector(".barModeUpdate");
 
-// // logout
+btnUpdateProject.addEventListener("click", () => {
+  // modalEditProject.style.display = "flex";
+  modalEditProject.classList.add("show");
+  window.addEventListener("click", handleClickOutsideModal);
+  displayProjectInModal();
+});
+
+// close modal edit project
+const closeModal = () => {
+  modalEditProject.classList.remove("show");
+  window.removeEventListener("click", handleClickOutsideModal);
+};
+const handleClickOutsideModal = (e) => {
+  if (
+    e.target === modalEditProject ||
+    e.target === btnCloseModal ||
+    barModeUpdate.contains(e.target)
+  ) {
+    closeModal();
+  }
+};
+
+// display project in modal
+const displayProjectInModal = () => {
+  const projectImgContainer = document.querySelector(".projectImgContainer");
+  projectImgContainer.innerHTML = "";
+  projectsData.forEach((project) => {
+    const formattedTitle = formatTitle(project.title);
+    projectImgContainer.innerHTML += `
+        <div class="project">
+          <img src="${project.imageUrl}" alt="${formattedTitle}"/>
+          <span class="material-symbols-outlined deleteIcon" data-id="${project.id}"> delete </span>
+          </div>
+          `;
+  });
+  handleDeleteProject();
+};
+
+// delete project
+const handleDeleteProject = () => {
+  const deleteIcon = document.querySelectorAll(".deleteIcon ");
+  const infoModal = document.querySelector(".infoModal");
+  const infoModalContent = document.querySelector(".infoModal p");
+  deleteIcon.forEach((icon) => {
+    icon.addEventListener("click", () => {
+      const dataId = icon.getAttribute("data-id");
+      // open modal info
+      infoModal.classList.add("showInfo");
+      infoModalContent.textContent = ` Votre projet n° ${dataId} a bien été supprimé !`;
+    });
+  });
+  // close info modal
+  const btnCloseModalInfo = document.querySelector(".closeInfoModal");
+  btnCloseModalInfo.addEventListener("click", () => {
+    infoModal.classList.remove("showInfo");
+  });
+};
+// -----------------
+// end open modal to edit project
+// ------------------
+
+// logout
 const btnLogout = document.querySelector(".toLogout");
 btnLogout.addEventListener("click", () => {
-  localStorage.removeItem("token");
+  sessionStorage.removeItem("token");
   window.location.href = "index.html";
 });

@@ -319,7 +319,43 @@ main {
   align-items: center;
   background: #0000004d;
   z-index: 100;
-  display: none;
+  transform: scale(0) translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s linear;
+}
+.infoModal {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  transform: translateY(-100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  max-width: 50vw;
+  height: max-content;
+  padding: 26px 30px;
+  border-radius: 10px;
+  background: #ffffff;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s linear;
+}
+.showInfo {
+  top: 50%;
+  left: 50%;
+  transform: scale(1) translate(-50%, -50%);
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.5s linear;
+}
+.show {
+  transform: scale(1) translate(0%);
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.5s linear;
 }
 
 .showData {
