@@ -37,6 +37,7 @@ li,
 .closeIcon,
 .deleteIcon,
 .backIcon,
+.closeIconAddPhoto,
 input[type="button"],
 input[type="submit"] {
   transition: all 0.3s ease;
@@ -227,6 +228,14 @@ main {
   flex-wrap: wrap;
   gap: 20px;
 }
+.noProject {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  text-decoration-line: underline;
+  margin-top: 50px;
+  color: #b1663c;
+}
 
 .galleryCard {
   max-width: calc((100% - 40px) / 3);
@@ -338,6 +347,7 @@ main {
   padding: 26px 30px;
   border-radius: 10px;
   background: #ffffff;
+  box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 59%);
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
@@ -358,7 +368,8 @@ main {
   transition: all 0.5s linear;
 }
 
-.showData {
+.showData,
+.modalPhoto {
   padding: 26px 30px;
   width: 630px;
   height: 688px;
@@ -369,24 +380,39 @@ main {
   flex-direction: column;
   align-items: center;
 }
-
-.showData .closeIcon {
+.modalPhoto {
+  height: 100%;
+  overflow: scroll;
+}
+.showData .closeIcon,
+.modalPhoto .closeIconAddPhoto {
   align-self: flex-end;
   transition: all 0.3s ease;
 }
 
-.showData .closeIcon:hover {
+.showData .closeIcon:hover,
+.modalPhoto .closeIconAddPhoto:hover {
   color: red;
   transform: scale(1.2);
 }
 
-.showData h2 {
+.showData h2,
+.modalPhoto h2 {
   font-family: "Work Sans";
   font-size: 26px;
   font-weight: 400;
   line-height: 30.5px;
   color: #000000;
   margin-bottom: 46px;
+}
+.errorMessage{
+  color: red;
+  margin-bottom: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+.modalPhoto {
+  display: none;
 }
 
 .projectImgContainer {
@@ -462,6 +488,7 @@ main {
   position: absolute;
   width: 129px;
   height: 100%;
+  display: none;
 }
 
 .photoUpload .imagesMode {
@@ -479,6 +506,15 @@ main {
   font-weight: 500;
   line-height: 16.42px;
   text-align: center;
+}
+.inputFile {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 1;
 }
 
 .photoUpload p {
@@ -518,7 +554,7 @@ main {
 
 .addPhoto {
   width: 237px;
-  height: 36px;
+  min-height: 36px;
   border-radius: 60px;
   background: #a7a7a7;
 }
