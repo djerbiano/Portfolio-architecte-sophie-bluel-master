@@ -327,12 +327,19 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #0000004d;
+  background: transparent;
   z-index: 100;
   transform: scale(0) translate(-50%, -50%);
   opacity: 0;
   visibility: hidden;
   transition: all 0.5s linear;
+  animation: backgroundModal linear 1s;
+}
+
+@keyframes backgroundModal {
+  100% {
+    background: transparent;
+  }
 }
 .infoModal {
   position: fixed;
@@ -367,6 +374,20 @@ main {
   opacity: 1;
   visibility: visible;
   transition: all 0.5s linear;
+  background: #0000004d;
+  animation: deleteBackground linear 1s;
+}
+
+@keyframes deleteBackground {
+  0% {
+    background: transparent;
+  }
+  50% {
+    background: transparent;
+  }
+  100% {
+    background: #0000004d;
+  }
 }
 
 .showData,
@@ -490,6 +511,7 @@ main {
   width: 129px;
   height: 100%;
   display: none;
+  object-fit: cover;
 }
 
 .photoUpload .imagesMode {
@@ -657,4 +679,3 @@ footer nav ul li {
 .login {
   display: none;
 }
-

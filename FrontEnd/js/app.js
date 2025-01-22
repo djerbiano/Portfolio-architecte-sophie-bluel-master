@@ -313,7 +313,7 @@ const createProject = async () => {
 
   // verify data befor upload
   if (!title) {
-    showErrorMessage.textContent = "Veuillez choisir du titre";
+    showErrorMessage.textContent = "Veuillez choisir un titre";
     return;
   } else if (!inputFile.files[0]) {
     showErrorMessage.textContent = "Veuillez sélectionner une photo";
