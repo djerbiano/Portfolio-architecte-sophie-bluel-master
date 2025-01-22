@@ -52,7 +52,7 @@ const login = () => {
         //en cas de mot de passe non valide, le back ne renvoie pas de message ! response = {"error":{}}. adaptation avec showModalError("Email ou mot de passe incorrect");
         // ------------------
         if (data.error) {
-          showModalError("Email ou mot de passe incorrect");
+          showModalError("Erreur dans l’identifiant ou le mot de passe");
         } else {
           showModalError(data.message);
         }

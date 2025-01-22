@@ -62,7 +62,8 @@ body {
 }
 
 .barModeUpdate {
-  width: 1440px;
+  max-width: 1440px;
+  width: 100%;
   background-color: black;
   height: 59px;
   color: white;
@@ -405,7 +406,7 @@ main {
   color: #000000;
   margin-bottom: 46px;
 }
-.errorMessage{
+.errorMessage {
   color: red;
   margin-bottom: 10px;
   font-size: 14px;
@@ -622,6 +623,28 @@ footer nav ul li {
     min-width: 60%;
   }
 }
+@media (max-width: 450px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .showData,
+  .modalPhoto {
+    max-width: 90vw;
+  }
+  .photoUpload {
+    width: 100%;
+  }
+  .addTxtPhoto {
+    width: 100%;
+    justify-content: center;
+  }
+  .addTxtPhoto input,
+  .addTxtPhoto select {
+    width: 100%;
+  }
+}
 
 @media (max-width: 370px) {
   .galleryCard {
@@ -634,3 +657,4 @@ footer nav ul li {
 .login {
   display: none;
 }
+

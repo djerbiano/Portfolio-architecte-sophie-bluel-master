@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title>Sophie Bluel - Architecte d'intérieur</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet"
-    />
+      rel="stylesheet">
 
     <link
       href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet">
 
-    <meta name="description" content="" />
-    <link rel="stylesheet" href="./css/index.css" />
-    <script type="module" src="./js/app.js" defer></script>
+    <meta name="description" content="">
+    <link rel="stylesheet" href="./css/index.css">
+    <script type="module" src="./js/app.js"></script>
   </head>
 
   <body>
@@ -35,15 +33,15 @@
           <li><a href="#contact">contact</a></li>
           <li class="logout"><a href="/login.html">login</a></li>
           <li class="login toLogout"><a href="#">logout</a></li>
-          <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
+          <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
         </ul>
       </nav>
     </header>
 
     <main>
-      <section id="introduction">
+      <div id="introduction">
         <figure>
-          <img src="./assets/images/sophie-bluel.png" alt="" />
+          <img src="./assets/images/sophie-bluel.png" alt="photo-de-Sophie-Bluel">
         </figure>
         <article>
           <h2>Designer d'espace</h2>
@@ -63,7 +61,7 @@
             : architecte DPLG, décorateur(trice)
           </p>
         </article>
-      </section>
+      </div>
 
       <section id="portfolio">
         <div class="portfolioTitle">
@@ -80,9 +78,9 @@
         <p>Vous avez un projet ? Discutons-en !</p>
         <form action="#" method="post">
           <label for="name">Nom</label>
-          <input type="text" name="name" id="name" />
+          <input type="text" name="name" id="name">
           <label for="email">Email</label>
-          <input type="email" name="email" id="email" />
+          <input type="email" name="email" id="email">
           <label for="message">Message</label>
           <textarea name="message" id="message" cols="30" rows="10"></textarea>
           <button type="submit" class="btnPrimary">Envoyer</button>
@@ -112,13 +110,13 @@
               imagesmode
             </span>
             <button type="button">+ Ajouter photo</button>
-            <input type="file" name="photo" id="photo" class="inputFile" />
+            <input type="file" name="photo" id="photo" class="inputFile">
             <p>jpg, png : 4mo max</p>
-            <img id="previewImage" />
+            <img id="previewImage" alt="previewImage">
           </div>
           <form action="#" class="addTxtPhoto">
             <label for="title">Titre</label>
-            <input type="text" name="title" id="title" />
+            <input type="text" name="title" id="title">
             <label for="category">Catégorie</label>
             <select name="category" id="category"></select>
           </form>

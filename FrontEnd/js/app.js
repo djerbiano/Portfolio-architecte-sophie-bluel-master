@@ -115,6 +115,19 @@ if (token) {
     element.style.display = "none";
   });
 }
+
+// desactivate elements when modal info is open
+const desactivateElements = () => {
+  const desactivateElements = document.querySelectorAll(
+    ".modalPhoto input, .modalPhoto button, .modalPhoto select"
+  );
+
+  if (infoModal.classList.contains("showInfo")) {
+    desactivateElements.forEach((element) => {
+      element.disabled = true;
+    });
+  }
+};
 const cleanFieldsInModalAddPhoto = () => {
   document.querySelector("#title").value = "";
   document.querySelector("#category").value = "";
@@ -234,12 +247,25 @@ const deleteProject = async (id) => {
   btnCloseInfoModal.addEventListener("click", handleCloseInfoModal);
 
   // display new list projects without refresh page
-  await getProjects();
+  // await getProjects();
+
+  const index = projectsData.findIndex((project) => project.id === Number(id));
+
+  projectsData.splice(index, 1);
+
+  displayProjects(projectsData);
   displayProjectInModal();
 };
 
 const handleCloseInfoModal = () => {
+  const desactivateElements = document.querySelectorAll(
+    ".modalPhoto input, .modalPhoto button, .modalPhoto select"
+  );
   infoModal.classList.remove("showInfo");
+
+  desactivateElements.forEach((element) => {
+    element.disabled = false;
+  });
 };
 
 // open modal to add photo
@@ -281,7 +307,7 @@ const showPhotoBeforeUpload = () => {
 
 // add new project
 const createProject = async () => {
-  const title = document.querySelector("#title").value;
+  const title = document.querySelector("#title").value.trim();
   const categoryId = document.querySelector("#category").value;
   showErrorMessage.textContent = "";
 
@@ -291,6 +317,9 @@ const createProject = async () => {
     return;
   } else if (!inputFile.files[0]) {
     showErrorMessage.textContent = "Veuillez sélectionner une photo";
+    return;
+  } else if (inputFile.files[0].size > 4000000) {
+    showErrorMessage.textContent = "Veuillez choisir une photo de moins de 4Mo";
     return;
   } else if (!categoryId) {
     showErrorMessage.textContent = "Veuillez choisir une catégorie";
@@ -316,14 +345,20 @@ const createProject = async () => {
 
     const data = await response.json();
 
+    // add new project to array in memory
+
+    projectsData.push(data);
+
     // open modal and display message
     showApiResponse(`Votre projet ${data.title} a bien été ajouté !`);
 
     // clean input fields after upload
     cleanFieldsInModalAddPhoto();
+    desactivateElements();
 
     // display new list projects without refresh page
-    await getProjects();
+    // await getProjects();
+    displayProjects(projectsData);
     displayProjectInModal();
   } catch (error) {
     console.error("Erreur lors de l'ajout du projet :", error);
@@ -332,11 +367,6 @@ const createProject = async () => {
   // close info modal
   btnCloseInfoModal.addEventListener("click", handleCloseInfoModal);
 };
-
-// desactivate form if modal info is open
-// -----------------
-//
-// ------------------
 
 // logout
 btnLogout.addEventListener("click", () => {
