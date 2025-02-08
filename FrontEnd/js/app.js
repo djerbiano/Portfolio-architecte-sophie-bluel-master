@@ -33,8 +33,8 @@ const API_URL = (API_ENDPOINT) => `http://localhost:5678/api/${API_ENDPOINT}`;
 let projectsData = [];
 let uniqueCategories = [];
 
-// get all projects
-const getProjects = async () => {
+// get all projects (fn IIFE (Immediately Invoked Function Expression))
+(async () => {
   try {
     const response = await fetch(API_URL("works"));
 
@@ -49,11 +49,30 @@ const getProjects = async () => {
   } catch (error) {
     console.error("Erreur lors de la récupération des projets :", error);
   }
-};
+})();
 
-getProjects();
+// const getProjects = async () => {
+//   try {
+//     const response = await fetch(API_URL("works"));
 
-const generateCategoryButton = async () => {
+//     if (!response.ok) {
+//       throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
+//     }
+
+//     projectsData = await response.json();
+
+//     // display all projects by default
+//     displayProjects(projectsData);
+//   } catch (error) {
+//     console.error("Erreur lors de la récupération des projets :", error);
+//   }
+// };
+
+// getProjects();
+
+// get all categories
+
+(async () => {
   const containerFilterBtn = document.querySelector(".filterContainer");
   try {
     const response = await fetch(API_URL("categories"));
@@ -69,16 +88,41 @@ const generateCategoryButton = async () => {
     containerFilterBtn.innerHTML = `<button class="btn" data-categoryId="Tous">Tous</button>`;
     uniqueCategories.forEach((categoryName) => {
       containerFilterBtn.innerHTML += `
-        <button class="btn" data-categoryId="${categoryName.id}">${categoryName.name}</button>
-      `;
+            <button class="btn" data-categoryId="${categoryName.id}">${categoryName.name}</button>
+          `;
     });
     filteredProjects();
   } catch (error) {
     console.error("Erreur lors de la récupération des catégories :", error);
   }
-};
+})();
 
-generateCategoryButton();
+// const generateCategoryButton = async () => {
+//   const containerFilterBtn = document.querySelector(".filterContainer");
+//   try {
+//     const response = await fetch(API_URL("categories"));
+
+//     if (!response.ok) {
+//       throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
+//     }
+
+//     uniqueCategories = await response.json();
+//     containerFilterBtn.innerHTML = "";
+
+//     // display buttons
+//     containerFilterBtn.innerHTML = `<button class="btn" data-categoryId="Tous">Tous</button>`;
+//     uniqueCategories.forEach((categoryName) => {
+//       containerFilterBtn.innerHTML += `
+//         <button class="btn" data-categoryId="${categoryName.id}">${categoryName.name}</button>
+//       `;
+//     });
+//     filteredProjects();
+//   } catch (error) {
+//     console.error("Erreur lors de la récupération des catégories :", error);
+//   }
+// };
+
+// generateCategoryButton();
 
 const handleFilterProjects = (categoryId) => {
   const filteredProjects = projectsData.filter(
@@ -247,7 +291,6 @@ const deleteProject = async (id) => {
   btnCloseInfoModal.addEventListener("click", handleCloseInfoModal);
 
   // display new list projects without refresh page
-  // await getProjects();
 
   const index = projectsData.findIndex((project) => project.id === Number(id));
 
@@ -357,7 +400,7 @@ const createProject = async () => {
     desactivateElements();
 
     // display new list projects without refresh page
-    // await getProjects();
+
     displayProjects(projectsData);
     displayProjectInModal();
   } catch (error) {
