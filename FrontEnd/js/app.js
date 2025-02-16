@@ -163,7 +163,7 @@ if (token) {
 // desactivate elements when modal info is open
 const desactivateElements = () => {
   const desactivateElements = document.querySelectorAll(
-    ".modalPhoto input, .modalPhoto button, .modalPhoto select"
+    ".modalPhoto input, .modalPhoto button, .modalPhoto select, .btnAddPhoto"
   );
 
   if (infoModal.classList.contains("showInfo")) {
@@ -298,11 +298,13 @@ const deleteProject = async (id) => {
 
   displayProjects(projectsData);
   displayProjectInModal();
+  desactivateElements();
+ 
 };
 
 const handleCloseInfoModal = () => {
   const desactivateElements = document.querySelectorAll(
-    ".modalPhoto input, .modalPhoto button, .modalPhoto select"
+    ".modalPhoto input, .modalPhoto button, .modalPhoto select, .btnAddPhoto"
   );
   infoModal.classList.remove("showInfo");
 
@@ -383,7 +385,7 @@ const createProject = async () => {
       body: formData,
     });
     if (response.status !== 201) {
-      throw new Error(`Erreur HTTP ! Statut : ${response}`);
+      throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
     }
 
     const data = await response.json();
